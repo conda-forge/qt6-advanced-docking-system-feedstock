@@ -1,0 +1,13 @@
+diff --git a/src/DockContainerWidget.h b/src/DockContainerWidget.h
+index f360b52..4a32e5a 100644
+--- a/src/DockContainerWidget.h
++++ b/src/DockContainerWidget.h
+@@ -130,7 +130,7 @@ protected:
+ 	/**
+ 	 * Adds the given dock area to this container widget
+ 	 */
+-	void addDockArea(CDockAreaWidget* DockAreaWidget, DockWidgetArea area = CenterDockWidgetArea);
++	void addDockArea(CDockAreaWidget* DockAreaWidget, DockWidgetArea area = ads::CenterDockWidgetArea);
+ 
+ 	/**
+ 	 * Removes the given dock area from this container
