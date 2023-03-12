@@ -1,4 +1,4 @@
-{% set version = "4.0.1" %}
+{% set version = "4.0.2" %}
 
 package:
   name: qt6-advanced-docking-system
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System/archive/{{ version }}.tar.gz
-  sha256: c65357f630dc22b645b5dfa2684fb2748a347235267e952dc30986da9bf88f50
+  sha256: b5bf5ebcb77c09ddf92e1e71f78b6598c1fc9311e2cca2dfed3a32ce45f2950d
   patches:
     - 0001-CMakeLists.patch
 
@@ -34,7 +34,6 @@ requirements:
   host:
     - qt6-main
     - libxcb                         # [linux]
-    
 test:
   commands:
     - if not exist %LIBRARY_BIN%\\qt6advanceddocking.dll exit 1                                     # [win]
