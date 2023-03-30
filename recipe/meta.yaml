@@ -1,7 +1,9 @@
+{% set name = "qt5-advanced-docking-system" if qt == '5' else 'qt6-advanced-docking-system' %}
+{% set libname = "qt5advanceddocking" if qt == '5' else 'qt6advanceddocking' %}
 {% set version = "4.0.1" %}
 
 package:
-  name: qt6-advanced-docking-system
+  name: {{ name|lower }}
   version: {{ version }}
 
 source:
@@ -13,7 +15,8 @@ source:
 build:
   number: 0
   run_exports:
-    - {{ pin_subpackage('qt6-advanced-docking-system', max_pin='x.x') }}
+    - {{ pin_subpackage('qt6-advanced-docking-system', max_pin='x.x') }}  # [qt==6]
+    - {{ pin_subpackage('qt5-advanced-docking-system', max_pin='x.x') }}  # [qt==5]
   missing_dso_whitelist:
   # Follow: https://github.com/conda-forge/deno-feedstock/blob/49611827965b148b4e724b23d4077de17cf4f90b/recipe/meta.yaml#L13-L23
     - /System/Library/Frameworks/Metal.framework/Versions/A/Metal  # [osx]
@@ -32,17 +35,18 @@ requirements:
     - {{ cdt('libxext') }}           # [linux]
 
   host:
-    - qt6-main
+    - qt6-main                       # [qt==6]
+    - qt-main                        # [qt==5]
     - libxcb                         # [linux]
     
 test:
   commands:
-    - if not exist %LIBRARY_BIN%\\qt6advanceddocking.dll exit 1                                     # [win]
-    - if not exist %LIBRARY_INC%\\qt6advanceddocking\\ads_globals.h exit 1                          # [win]
-    - if not exist %LIBRARY_LIB%\\cmake\\qt6advanceddocking\\qt6advanceddockingConfig.cmake exit 1  # [win]
-    - test -f $PREFIX/lib/libqt6advanceddocking${SHLIB_EXT}                                         # [unix]
-    - test -f $PREFIX/include/qt6advanceddocking/ads_globals.h                                      # [unix]
-    - test -f $PREFIX/lib/cmake/qt6advanceddocking/qt6advanceddockingConfig.cmake                    # [unix]
+    - if not exist %LIBRARY_BIN%\\{{libname}}.dll exit 1                              # [win]
+    - if not exist %LIBRARY_INC%\\{{libname}}\\ads_globals.h exit 1                   # [win]
+    - if not exist %LIBRARY_LIB%\\cmake\\{{libname}}\\{{libname}}Config.cmake exit 1  # [win]
+    - test -f $PREFIX/lib/lib{{libname}}${SHLIB_EXT}                                  # [unix]
+    - test -f $PREFIX/include/{{libname}}/ads_globals.h                               # [unix]
+    - test -f $PREFIX/lib/cmake/{{libname}}/{{libname}}Config.cmake                   # [unix]
 
 about:
   home: https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System
