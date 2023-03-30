@@ -13,7 +13,7 @@ source:
     - 0001-CMakeLists.patch
 
 build:
-  number: 0
+  number: 1
   run_exports:
     - {{ pin_subpackage('qt6-advanced-docking-system', max_pin='x.x') }}  # [qt==6]
     - {{ pin_subpackage('qt5-advanced-docking-system', max_pin='x.x') }}  # [qt==5]
