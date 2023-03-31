@@ -1,6 +1,6 @@
 {% set name = "qt5-advanced-docking-system" if qt == '5' else 'qt6-advanced-docking-system' %}
 {% set libname = "qt5advanceddocking" if qt == '5' else 'qt6advanceddocking' %}
-{% set version = "4.0.1" %}
+{% set version = "4.0.2" %}
 
 package:
   name: {{ name|lower }}
@@ -8,12 +8,12 @@ package:
 
 source:
   url: https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System/archive/{{ version }}.tar.gz
-  sha256: c65357f630dc22b645b5dfa2684fb2748a347235267e952dc30986da9bf88f50
+  sha256: b5bf5ebcb77c09ddf92e1e71f78b6598c1fc9311e2cca2dfed3a32ce45f2950d
   patches:
     - 0001-CMakeLists.patch
 
 build:
-  number: 1
+  number: 0
   run_exports:
     - {{ pin_subpackage(name, max_pin='x.x') }}
   missing_dso_whitelist:
@@ -37,7 +37,6 @@ requirements:
     - qt6-main                       # [qt==6]
     - qt-main                        # [qt==5]
     - libxcb                         # [linux]
-    
 test:
   commands:
     - if not exist %LIBRARY_BIN%\\{{ libname }}.dll exit 1                                # [win]
