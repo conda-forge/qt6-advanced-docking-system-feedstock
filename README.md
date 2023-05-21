@@ -200,6 +200,3 @@ Feedstock Maintainers
 
 * [@n-elie](https://github.com/n-elie/)
 
-
-<!-- dummy commit to enable rerendering -->
-
