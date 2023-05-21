@@ -6,8 +6,6 @@ cxx_compiler:
 - vs2019
 qt:
 - '6'
-qt6_main:
-- '6.3'
 qt_main:
 - '5.15'
 target_platform:
