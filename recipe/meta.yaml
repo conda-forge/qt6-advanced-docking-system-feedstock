@@ -1,6 +1,6 @@
 {% set name = "qt5-advanced-docking-system" if qt == '5' else 'qt6-advanced-docking-system' %}
 {% set libname = "qt5advanceddocking" if qt == '5' else 'qt6advanceddocking' %}
-{% set version = "4.1.0" %}
+{% set version = "4.1.1" %}
 
 package:
   name: {{ name|lower }}
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System/archive/{{ version }}.tar.gz
-  sha256: e831c843ba6f4498be0e43e81fd707da2013fc9daaaf48383a83e1669ecf9f2e
+  sha256: bc029feaa9939e1cb639b4e1a085579450be68ca7fb8221f032b0e6499abbc1d
 
 build:
   number: 0
@@ -32,8 +32,8 @@ requirements:
     - {{ cdt('libxext') }}           # [linux]
 
   host:
-    - qt6-main                       # [qt==6]
-    - qt-main                        # [qt==5]
+    - qt6-main                       # [qt==6 or qt=='']
+    - qt-main                        # [qt==5 or qt=='']
     - libxcb                         # [linux]
 test:
   commands:
