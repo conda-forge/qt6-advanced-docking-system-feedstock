@@ -32,8 +32,8 @@ requirements:
     - {{ cdt('libxext') }}           # [linux]
 
   host:
-    - qt6-main                       # [qt==6]
-    - qt-main                        # [qt==5]
+    - qt6-main                       # [qt==6 or qt=='']
+    - qt-main                        # [qt==5 or qt=='']
     - libxcb                         # [linux]
 test:
   commands:
