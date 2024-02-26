@@ -15,7 +15,7 @@ libxcb:
 qt:
 - '6'
 qt6_main:
-- '6.5'
+- '6.6'
 qt_main:
 - '5.15'
 target_platform:
