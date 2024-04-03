@@ -1,6 +1,6 @@
 {% set name = "qt5-advanced-docking-system" if qt == '5' else 'qt6-advanced-docking-system' %}
 {% set libname = "qt5advanceddocking" if qt == '5' else 'qt6advanceddocking' %}
-{% set version = "4.2.1" %}
+{% set version = "4.3.0" %}
 
 package:
   name: {{ name|lower }}
@@ -8,10 +8,10 @@ package:
 
 source:
   url: https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System/archive/{{ version }}.tar.gz
-  sha256: c2a1e6f06bb8c22698f415428b446063bc0a50fd5b8fec403091516d5ac06cbc
+  sha256: 75d16c91a2417648555d5a061b2d9033e67e378783548230b89ea3140b8efc53
 
 build:
-  number: 1
+  number: 0
   run_exports:
     - {{ pin_subpackage(name, max_pin='x.x') }}
   missing_dso_whitelist:
