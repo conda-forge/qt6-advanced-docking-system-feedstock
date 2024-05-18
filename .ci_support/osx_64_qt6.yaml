@@ -15,7 +15,7 @@ macos_machine:
 qt:
 - '6'
 qt6_main:
-- '6.6'
+- '6.7'
 qt_main:
 - '5.15'
 target_platform:
