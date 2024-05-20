@@ -11,7 +11,7 @@ source:
   sha256: c2a1e6f06bb8c22698f415428b446063bc0a50fd5b8fec403091516d5ac06cbc
 
 build:
-  number: 2
+  number: 3
   run_exports:
     - {{ pin_subpackage(name, max_pin='x.x') }}
   missing_dso_whitelist:
