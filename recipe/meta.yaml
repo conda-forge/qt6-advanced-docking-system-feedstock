@@ -1,5 +1,5 @@
 {% set name = "qt5-advanced-docking-system" if qt == '5' else 'qt6-advanced-docking-system' %}
-{% set libname = "qt5advanceddocking" if qt == '5' else 'qt6advanceddocking' %}
+{% set libname = "libqtadvanceddocking-qt5" if qt == '5' else 'libqtadvanceddocking-qt6' %}
 {% set version = "4.4.0" %}
 
 package:
