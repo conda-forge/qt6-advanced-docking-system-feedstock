@@ -14,4 +14,4 @@ cmake \
   -DADS_VERSION=${PKG_VERSION} \
   ..
 make install -j${CPU_COUNT} 
-rm -r ${PREFIX}/license
+rm -r ${PREFIX}/share/ads/license
