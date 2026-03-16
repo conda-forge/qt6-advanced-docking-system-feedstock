@@ -13,7 +13,7 @@ source:
     - 0001-CMakeLists.patch
 
 build:
-  number: 0
+  number: 1
   run_exports:
     - {{ pin_subpackage(name, max_pin='x.x') }}
   missing_dso_whitelist:
@@ -27,17 +27,12 @@ requirements:
     - {{ stdlib("c") }}
     - make                           # [not win]
     - ninja                          # [win]
-    - {{ cdt('mesa-libgl-devel') }}  # [linux]
-    - {{ cdt('mesa-dri-drivers') }}  # [linux]
-    - {{ cdt('libselinux') }}        # [linux]
-    - {{ cdt('libxdamage') }}        # [linux]
-    - {{ cdt('libxxf86vm') }}        # [linux]
-    - {{ cdt('libxext') }}           # [linux]
 
   host:
     - qt6-main                       # [qt==6 or qt=='']
     - qt-main                        # [qt==5 or qt=='']
     - libxcb                         # [linux]
+    - libgl-devel                    # [linux]
 test:
   commands:
     - if not exist %LIBRARY_BIN%\\{{ libname }}.dll exit 1                                # [win]
