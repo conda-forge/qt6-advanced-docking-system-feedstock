@@ -2,8 +2,6 @@ c_stdlib:
 - sysroot
 c_stdlib_version:
 - '2.17'
-cdt_name:
-- conda
 channel_sources:
 - conda-forge
 channel_targets:
@@ -19,7 +17,7 @@ libxcb:
 qt:
 - '5'
 qt6_main:
-- '6.9'
+- '6.10'
 qt_main:
 - '5.15'
 target_platform:
