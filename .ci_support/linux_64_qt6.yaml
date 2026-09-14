@@ -11,15 +11,15 @@ channel_targets:
 cxx_compiler:
 - gxx
 cxx_compiler_version:
-- '14'
+- '15'
 docker_image:
-- quay.io/condaforge/linux-anvil-x86_64:alma9
+- quay.io/condaforge/linux-anvil-x86_64:alma10
 libxcb:
 - '1'
 qt:
 - '6'
 qt6_main:
-- '6.9'
+- '6'
 qt_main:
 - '5.15'
 target_platform:
