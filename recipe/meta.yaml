@@ -9,8 +9,6 @@ package:
 source:
   url: https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System/archive/v{{ version }}.tar.gz
   sha256: 9ce947acbb1984946f9145c976e42e6984f99b98fb414dd7354a290af6d4ff04
-  patches:
-    - 0001-CMakeLists.patch
 
 build:
   number: 0
