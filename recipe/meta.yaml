@@ -11,7 +11,7 @@ source:
   sha256: 9ce947acbb1984946f9145c976e42e6984f99b98fb414dd7354a290af6d4ff04
 
 build:
-  number: 0
+  number: 1
   run_exports:
     - {{ pin_subpackage(name, max_pin='x.x') }}
   missing_dso_whitelist:
@@ -25,17 +25,12 @@ requirements:
     - {{ stdlib("c") }}
     - make                           # [not win]
     - ninja                          # [win]
-    - {{ cdt('mesa-libgl-devel') }}  # [linux]
-    - {{ cdt('mesa-dri-drivers') }}  # [linux]
-    - {{ cdt('libselinux') }}        # [linux]
-    - {{ cdt('libxdamage') }}        # [linux]
-    - {{ cdt('libxxf86vm') }}        # [linux]
-    - {{ cdt('libxext') }}           # [linux]
 
   host:
     - qt6-main                       # [qt==6 or qt=='']
     - qt-main                        # [qt==5 or qt=='']
     - libxcb                         # [linux]
+    - libgl-devel                    # [linux]
 test:
   commands:
     - if not exist %LIBRARY_BIN%\\{{ libname }}.dll exit 1                                # [win]
