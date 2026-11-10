@@ -64,5 +64,6 @@ about:
   summary: Advanced Docking System for Qt
 
 extra:
+  feedstock-name: qt6-advanced-docking-system
   recipe-maintainers:
     - n-elie
