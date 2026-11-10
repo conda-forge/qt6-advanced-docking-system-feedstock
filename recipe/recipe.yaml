@@ -12,6 +12,12 @@ package:
 source:
   url: https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System/archive/v${{ version }}.tar.gz
   sha256: 9ce947acbb1984946f9145c976e42e6984f99b98fb414dd7354a290af6d4ff04
+  patches:
+    # Keep inactive tabs parented to their dock area, so render-to-texture
+    # widgets (QRhiWidget, QOpenGLWidget) keep their graphics resources across
+    # tab switches. Needed by PlotJuggler 4. From the PlotJuggler fork:
+    # https://github.com/PlotJuggler/Qt-Advanced-Docking-System/commit/d713b1f97ecec009fa07b83f6594adec2f131d41
+    - 0001-keep-inactive-tabs-parented-to-their-dock-area.patch
 
 build:
   number: 3

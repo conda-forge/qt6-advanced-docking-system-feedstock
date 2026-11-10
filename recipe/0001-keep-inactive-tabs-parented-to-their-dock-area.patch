@@ -1,0 +1,98 @@
+From d713b1f97ecec009fa07b83f6594adec2f131d41 Mon Sep 17 00:00:00 2001
+From: Davide Faconti <davide.faconti@gmail.com>
+Date: Mon, 28 Sep 2026 07:52:53 +0200
+Subject: [PATCH] fix(DockAreaWidget): keep inactive tabs parented to their
+ dock area
+
+CDockAreaLayout unparented every tab it switched away from, and every widget
+it inserted or removed. A parentless widget is a top-level window, so a tab
+switch moved the page to a new top-level and back: a render-to-texture widget
+(QRhiWidget, QOpenGLWidget) released and rebuilt its graphics resources on
+every switch, re-uploading all its data (PlotJuggler: 1 QRhi adoption, a
+pipeline rebuild and a 190 MiB re-upload per switch; 124 ms on OpenGL and up
+to 1 s on Vulkan for a 10M-point scene, now about 5 ms).
+
+The layout now takes the previous tab out of the box layout (only the current
+widget still takes part in sizing) and hides it, but keeps its parent.
+insertWidget()/removeWidget() no longer unparent either: insertDockWidget()
+and removeDockWidget() reparent through setDockArea() right after, and a
+reordered tab stays in its area. Floats, redocks and moves between areas still
+unparent through setDockArea(nullptr).
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01V3ZZU95hWdyWcCj8dQkmAi
+---
+ src/DockAreaWidget.cpp | 31 +++++++++++++------------------
+ 1 file changed, 13 insertions(+), 18 deletions(-)
+
+diff --git a/src/DockAreaWidget.cpp b/src/DockAreaWidget.cpp
+index 61c94dc..32fbd38 100644
+--- a/src/DockAreaWidget.cpp
++++ b/src/DockAreaWidget.cpp
+@@ -72,9 +72,10 @@ static bool isAutoHideFeatureEnabled()
+ /**
+  * Internal dock area layout mimics stack layout but only inserts the current
+  * widget into the internal QLayout object.
+- * \warning Only the current widget has a parent. All other widgets
+- * do not have a parent. That means, a widget that is in this layout may
+- * return nullptr for its parent() function if it is not the current widget.
++ * The other widgets are hidden and stay parented to the dock area: a
++ * render-to-texture widget (QRhiWidget, QOpenGLWidget) keeps its graphics
++ * resources across tab switches, where a parentless (top-level) state would
++ * make it release and rebuild them every time.
+  */
+ class CDockAreaLayout
+ {
+@@ -104,11 +105,11 @@ public:
+ 
+ 	/**
+ 	 * Inserts the widget at the given index position into the internal widget
+-	 * list
++	 * list. The widget keeps its parent: CDockAreaWidget::insertDockWidget()
++	 * reparents it to the area right after, and a reordered tab stays in it.
+ 	 */
+ 	void insertWidget(int index, QWidget* Widget)
+ 	{
+-		Widget->setParent(nullptr);
+ 		if (index < 0)
+ 		{
+ 			index = m_Widgets.count();
+@@ -128,18 +129,15 @@ public:
+ 	}
+ 
+ 	/**
+-	 * Removes the given widget from the layout
++	 * Removes the given widget from the layout. The widget keeps its parent:
++	 * CDockAreaWidget::removeDockWidget() unparents it right after, and a
++	 * reordered tab is inserted again at once.
+ 	 */
+ 	void removeWidget(QWidget* Widget)
+ 	{
+ 		if (currentWidget() == Widget)
+ 		{
+-			auto LayoutItem = m_ParentLayout->takeAt(1);
+-			if (LayoutItem)
+-			{
+-				LayoutItem->widget()->setParent(nullptr);
+-			}
+-			delete LayoutItem;
++			delete m_ParentLayout->takeAt(1);
+ 			m_CurrentWidget = nullptr;
+ 			m_CurrentIndex = -1;
+ 		}
+@@ -181,12 +179,9 @@ public:
+ 
+ 		if (m_CurrentWidget)
+ 		{
+-			auto LayoutItem = m_ParentLayout->takeAt(1);
+-			if (LayoutItem)
+-			{
+-				LayoutItem->widget()->setParent(nullptr);
+-			}
+-			delete LayoutItem;
++			// Out of the layout (only the current widget takes part in sizing),
++			// hidden below, still parented.
++			delete m_ParentLayout->takeAt(1);
+ 		}
+ 
+ 		m_ParentLayout->insertWidget(1, next);
