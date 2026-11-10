@@ -53,9 +53,7 @@ tests:
       include:
         - ${{ libname }}/ads_globals.h
       files:
-        - if: win
-          then: Library/lib/cmake/${{ libname }}/${{ libname }}Config.cmake
-          else: lib/cmake/${{ libname }}/${{ libname }}Config.cmake
+        - ${{ "Library/" if win }}lib/cmake/${{ libname }}/${{ libname }}Config.cmake
 
 about:
   homepage: https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System
