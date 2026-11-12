@@ -1,7 +1,7 @@
 About qt6-advanced-docking-system-feedstock
 ===========================================
 
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/qt-advanced-docking-system-feedstock/blob/main/LICENSE.txt)
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/qt6-advanced-docking-system-feedstock/blob/main/LICENSE.txt)
 
 Home: https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System
 
@@ -16,8 +16,8 @@ Current build status
 <table><tr>
     <td>GitHub Actions</td>
     <td>
-      <a href="https://github.com/conda-forge/qt-advanced-docking-system-feedstock/actions/workflows/conda-build.yml">
-        <img src="https://github.com/conda-forge/qt-advanced-docking-system-feedstock/actions/workflows/conda-build.yml/badge.svg?event=push&branch=main">
+      <a href="https://github.com/conda-forge/qt6-advanced-docking-system-feedstock/actions/workflows/conda-build.yml">
+        <img src="https://github.com/conda-forge/qt6-advanced-docking-system-feedstock/actions/workflows/conda-build.yml/badge.svg?event=push&branch=main">
       </a>
     </td>
   </tr>
@@ -27,8 +27,8 @@ Current build status
     <td>
       <details>
         <summary>
-          <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=None&branchName=main">
-            <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/qt-advanced-docking-system-feedstock?branchName=main">
+          <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=18807&branchName=main">
+            <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/qt6-advanced-docking-system-feedstock?branchName=main">
           </a>
         </summary>
         <table>
@@ -36,29 +36,29 @@ Current build status
           <tbody><tr>
               <td>osx_64_qt5</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=None&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/qt-advanced-docking-system-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_qt5" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=18807&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/qt6-advanced-docking-system-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_qt5" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>osx_64_qt6</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=None&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/qt-advanced-docking-system-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_qt6" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=18807&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/qt6-advanced-docking-system-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_qt6" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>osx_arm64_qt5</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=None&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/qt-advanced-docking-system-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_qt5" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=18807&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/qt6-advanced-docking-system-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_qt5" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>osx_arm64_qt6</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=None&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/qt-advanced-docking-system-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_qt6" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=18807&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/qt6-advanced-docking-system-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_qt6" alt="variant">
                 </a>
               </td>
             </tr>
